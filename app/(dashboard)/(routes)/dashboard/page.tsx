@@ -1,10 +1,11 @@
-import { Button } from "@/components/ui/button";
+import { UserButton } from "@clerk/nextjs";
 
 const DashboardPage = () => {
   return (
-    <Button variant="outline" size="lg">
-      My Button
-    </Button>
+    <>
+      <div>Welcome back ....</div>
+      <UserButton />
+    </>
   );
 };
 
