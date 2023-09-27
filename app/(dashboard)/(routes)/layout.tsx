@@ -1,3 +1,5 @@
+"use client";
+
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/sidebar";
 
@@ -10,7 +12,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
 
       {/* body */}
-      <div className="pl-sidebar">
+      <div className="md:pl-sidebar">
         <Navbar />
 
         {children}
