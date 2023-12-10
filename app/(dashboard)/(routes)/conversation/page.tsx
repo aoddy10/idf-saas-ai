@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import ChatCompletionRequestMessage from "openai";
 import axios from "axios";
+import type { ChatMessageProps } from "@/lib/types";
 
 // icon
 import { MessageSquare } from "lucide-react";
@@ -25,16 +26,11 @@ import { cn } from "@/lib/utils";
 import { UserAvatar } from "@/components/user-avatar";
 import { BotAvatar } from "@/components/bot-avatar";
 
-type typeMessageProps = {
-  role: string;
-  content: string;
-};
-
 const ConversationPage = () => {
   const router = useRouter();
 
   //   TODO: need to user Chat
-  const [messages, setMessages] = useState<typeMessageProps[]>([]);
+  const [messages, setMessages] = useState<ChatMessageProps[]>([]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -48,13 +44,13 @@ const ConversationPage = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       // create new message
-      const userMessage: typeMessageProps = {
+      const userMessage: ChatMessageProps = {
         role: "user",
         content: values.prompt,
       };
 
       //   add new message to history
-      const newMessages: typeMessageProps[] = [...messages, userMessage];
+      const newMessages: ChatMessageProps[] = [...messages, userMessage];
 
       //   get request to api
       const response = await axios.post("/api/conversation", {

@@ -26,7 +26,7 @@ export const POST = async (req: Request) => {
             return new NextResponse("OpenAI API Key not configured", {status: 500})
         }
 
-        if (!userId) {
+        if (!messages) {
             return new NextResponse("Messages are required", {status: 400})
         }
 
