@@ -11,6 +11,7 @@ const Navbar = () => {
 
       {/* menu */}
       <div className="flex w-full justify-end">
+        {/* sign out and go back to public page */}
         <UserButton afterSignOutUrl="/" />
       </div>
     </div>
