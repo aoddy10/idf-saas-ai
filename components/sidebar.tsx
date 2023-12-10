@@ -76,7 +76,7 @@ const Sidebar = () => {
         {/* logo */}
         <Link href="/dashboard" className="flex items-center pl-3 mb-14">
           <div className="relative w-8 h-8 mr-4">
-            <Image fill alt="logo" src="/logo-transparant.png" />
+            <Image fill alt="logo" src="/logo.png" />
           </div>
           <h1 className={cn("font-bold text-2xl", poppins.className)}>
             Idevtify
