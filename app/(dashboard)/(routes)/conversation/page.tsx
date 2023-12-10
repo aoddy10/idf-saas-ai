@@ -1,14 +1,19 @@
 "use client";
 
-import Heading from "@/components/heading";
+// icon
 import { MessageSquare } from "lucide-react";
+
+// form
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { formSchema } from "./constants";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+// ui
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import Heading from "@/components/heading";
 
 const Conversation = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -64,6 +69,7 @@ const Conversation = () => {
             </form>
           </Form>
         </div>
+        <div className="space-y-4 mt-4">Message content</div>
       </div>
     </div>
   );
