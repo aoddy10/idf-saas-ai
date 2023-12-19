@@ -3,10 +3,9 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import axios from "axios";
-import type { ChatMessageProps } from "@/lib/types";
 
 // icon
-import { Music } from "lucide-react";
+import { Video, VideoIcon } from "lucide-react";
 
 // form
 import { useForm } from "react-hook-form";
@@ -22,11 +21,11 @@ import Heading from "@/components/heading";
 import { Empty } from "@/components/empty";
 import { Loader } from "@/components/loader";
 
-const MusicPage = () => {
+const VideoPage = () => {
   const router = useRouter();
 
   //   TODO: need to user Chat
-  const [music, setMusic] = useState<String>();
+  const [video, setVideo] = useState<String>();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -39,12 +38,12 @@ const MusicPage = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      setMusic(undefined);
+      setVideo(undefined);
 
       //   get request to api
-      const response = await axios.post("/api/music", values);
+      const response = await axios.post("/api/video", values);
 
-      setMusic(response.data.audio);
+      setVideo(response.data[0]);
 
       //   input is clear
       form.reset();
@@ -59,11 +58,11 @@ const MusicPage = () => {
   return (
     <div>
       <Heading
-        title="Music generation"
-        description="Turn your prompt in to music."
-        icon={Music}
-        iconColor="text-emerald-500"
-        bgColor="bg-emerald-500/10"
+        title="Video generation"
+        description="Turn your prompt in to video."
+        icon={VideoIcon}
+        iconColor="text-orange-700"
+        bgColor="bg-orange-700/10"
       />
 
       <div className="px-4 lg:px-8">
@@ -102,11 +101,14 @@ const MusicPage = () => {
               <Loader />
             </div>
           )}
-          {!music && !isLoading && <Empty label="No music generated." />}
-          {music && (
-            <audio controls className="w-full mt-8">
-              <source src={music as string} />
-            </audio>
+          {!video && !isLoading && <Empty label="No video generated." />}
+          {video && (
+            <video
+              controls
+              className="w-full aspect-video mt-8 rounded-lg border bg-black"
+            >
+              <source src={video as string} />
+            </video>
           )}
         </div>
       </div>
@@ -114,4 +116,4 @@ const MusicPage = () => {
   );
 };
 
-export default MusicPage;
+export default VideoPage;
