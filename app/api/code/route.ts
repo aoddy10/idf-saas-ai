@@ -1,3 +1,4 @@
+import config from '@/lib/config'
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import OpenAI from "openai"
@@ -22,7 +23,7 @@ export const POST = async (req: Request) => {
             return new NextResponse("Unauthorized", {status: 401})
         }
 
-        if (!process.env.OPENAI_API_KEY) {
+        if (!config.openaiApiKey) {
             return new NextResponse("OpenAI API Key not configured", {status: 500})
         }
 
