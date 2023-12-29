@@ -17,6 +17,8 @@ import Image from "next/image";
 import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { number } from "zod";
+import FreeCounter from "@/components/free-counter";
 
 const poppins = Poppins({
   weight: "600",
@@ -67,7 +69,11 @@ const routes = [
   },
 ];
 
-const Sidebar = () => {
+type SidebarProps = {
+  apiLimitCount: number;
+};
+
+const Sidebar = ({ apiLimitCount }: SidebarProps) => {
   const pathname = usePathname();
 
   return (
@@ -102,6 +108,8 @@ const Sidebar = () => {
           </Link>
         ))}
       </div>
+
+      <FreeCounter apiLimitCount={apiLimitCount} />
     </div>
   );
 };

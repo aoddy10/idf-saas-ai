@@ -3,11 +3,15 @@ import { Button } from "./ui/button";
 import { UserButton } from "@clerk/nextjs";
 import MobileSidebar from "./mobile-sidebar";
 
-const Navbar = () => {
+type NavbarProps = {
+  apiLimitCount: number;
+};
+
+const Navbar = ({ apiLimitCount }: NavbarProps) => {
   return (
     <div className="flex p-4 items-center">
       {/* hamburger button */}
-      <MobileSidebar />
+      <MobileSidebar apiLimitCount={apiLimitCount} />
 
       {/* menu */}
       <div className="flex w-full justify-end">

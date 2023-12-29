@@ -1,10 +1,17 @@
+"use client";
+
 import { Menu } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import Sidebar from "./sidebar";
+import Sidebar from "@/components/sidebar";
 import { useEffect, useState } from "react";
+import { getApiLimitCount } from "@/lib/api-limit";
 
-const MobileSidebar = () => {
+type MobileSidebarProps = {
+  apiLimitCount: number;
+};
+
+const MobileSidebar = ({ apiLimitCount }: MobileSidebarProps) => {
   const [isMounted, setIsMounted] = useState(false);
 
   // declare isMounted and set to true when it's mounted to fix hydration issues
@@ -24,7 +31,7 @@ const MobileSidebar = () => {
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="p-0">
-        <Sidebar />
+        <Sidebar apiLimitCount={apiLimitCount} />
       </SheetContent>
     </Sheet>
   );
