@@ -2,12 +2,10 @@ import { Menu } from "lucide-react";
 import { Button } from "./ui/button";
 import { UserButton } from "@clerk/nextjs";
 import MobileSidebar from "./mobile-sidebar";
+import { getApiLimitCount } from "@/lib/api-limit";
 
-type NavbarProps = {
-  apiLimitCount: number;
-};
-
-const Navbar = ({ apiLimitCount }: NavbarProps) => {
+const Navbar = async () => {
+  const apiLimitCount = await getApiLimitCount();
   return (
     <div className="flex p-4 items-center">
       {/* hamburger button */}

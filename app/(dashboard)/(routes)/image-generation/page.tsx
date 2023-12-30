@@ -32,6 +32,7 @@ import {
 } from "@/components/ui/select";
 import { Card, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 type typeMessageProps = {
   role: string;
@@ -39,6 +40,7 @@ type typeMessageProps = {
 };
 
 const ImageGenerationPage = () => {
+  const proModal = useProModal();
   const router = useRouter();
   const [images, setImages] = useState<string[]>([]);
 
@@ -70,9 +72,10 @@ const ImageGenerationPage = () => {
 
       //   input is clear
       form.reset();
-    } catch (error) {
-      // TODO: Open Pro Modal
-      console.log(error);
+    } catch (error: any) {
+      if (error?.response?.status === 403) {
+        proModal.onOpen();
+      }
     } finally {
       router.refresh();
     }

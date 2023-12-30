@@ -25,6 +25,7 @@ import { Loader } from "@/components/loader";
 import { cn } from "@/lib/utils";
 import { UserAvatar } from "@/components/user-avatar";
 import { BotAvatar } from "@/components/bot-avatar";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 type typeMessageProps = {
   role: string;
@@ -32,6 +33,7 @@ type typeMessageProps = {
 };
 
 const CodeGenerationPage = () => {
+  const proModal = useProModal();
   const router = useRouter();
 
   //   TODO: need to user Chat
@@ -69,9 +71,10 @@ const CodeGenerationPage = () => {
 
       //   input is clear
       form.reset();
-    } catch (error) {
-      // TODO: Open Pro Modal
-      console.log(error);
+    } catch (error: any) {
+      if (error?.response?.status === 403) {
+        proModal.onOpen();
+      }
     } finally {
       router.refresh();
     }
