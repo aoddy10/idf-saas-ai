@@ -4,7 +4,6 @@ import { NextResponse } from 'next/server'
 import prismadb from '@/lib/prismadb'
 import {stripe} from "@/lib/stripe"
 import { absoluteUrl } from '@/lib/utils'
-import { Nerko_One } from 'next/font/google'
 
 const settingUrl = absoluteUrl("/settings")
 
@@ -25,7 +24,7 @@ export const GET = async() => {
         }
     });
 
-    // check if user already have subscription, go to billing portal to unsubscribe if it needs
+    // check if user already have subscription, go to billing portal to upgrade/unsubscribe if it needs
     if (userSubscription && userSubscription.stripeCustomerId) {
         const stripeSession = await stripe.billingPortal.sessions.create({
             customer: userSubscription.stripeCustomerId,

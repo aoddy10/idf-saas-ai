@@ -13,7 +13,8 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL,
 OPENAI_API_KEY,
 REPLICATE_API_TOKEN,
 DATABASE_URL,
-STRIPE_API_KEY
+STRIPE_API_KEY,
+STRIPE_WEBHOOK_SECRET
 } = process.env;
 
 // validate the required configuration information
@@ -28,6 +29,7 @@ assert(OPENAI_API_KEY, "OPENAI_API_KEY configuration is required.");
 assert(REPLICATE_API_TOKEN, "REPLICATE_API_TOKEN configuration is required.");
 assert(DATABASE_URL, "DATABASE_URL configuration is required.");
 assert(STRIPE_API_KEY, "STRIPE_API_KEY configuration is required.");
+assert(STRIPE_WEBHOOK_SECRET, "STRIPE_WEBHOOK_SECRET configuration is required.");
 
 // export the configuration information
 export default {
@@ -43,5 +45,9 @@ export default {
     openaiApiKey: OPENAI_API_KEY,
     replicateApiToken: REPLICATE_API_TOKEN,
     databaseUrl: DATABASE_URL,
-    stripeApiKey: STRIPE_API_KEY
+    stripe: {
+        apiKey: STRIPE_API_KEY,
+        webhookSecret: STRIPE_WEBHOOK_SECRET
+
+    }
 }
