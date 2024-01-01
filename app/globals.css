@@ -20,13 +20,15 @@ html,body, :root {
     --primary: 218 87% 10%;
     --primary-foreground: 210 40% 98%;
  
+    /* 39 100% 45%; */
+    /* 210 40% 96.1%; */
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
  
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
  
-    --accent: 210 40% 96.1%;
+    --accent: 39 100% 45%;
     --accent-foreground: 222.2 47.4% 11.2%;
  
     --destructive: 0 84.2% 60.2%;
