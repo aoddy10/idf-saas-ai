@@ -18,7 +18,7 @@ export const GET = async() => {
     }
 
     // check if have user subscription
-    const userSubscription = await prismadb.userSubcription.findUnique({
+    const userSubscription = await prismadb.userSubscription.findUnique({
         where: {
             userId
         }

@@ -1,6 +1,6 @@
-import Config from '@/lib/config'
+import CONFIG from '@/lib/config';
 import Stripe from 'stripe'
-import {headers } from "next/headers";
+import { headers } from "next/headers";
 import { NextResponse } from 'next/server';
 
 import prismadb from '@/lib/prismadb';
@@ -8,6 +8,7 @@ import { stripe } from '@/lib/stripe';
 
 
 export const POST = async(req: Request) => {
+
     const body = await req.text();
     const signature = headers().get("Stripe-Signature") as string;
 
@@ -17,7 +18,7 @@ export const POST = async(req: Request) => {
         event = stripe.webhooks.constructEvent(
             body,
             signature,
-            Config.stripe.webhookSecret
+            CONFIG.stripe.webhookSecret!
         )
     
     } catch (error: any) {
@@ -26,6 +27,9 @@ export const POST = async(req: Request) => {
 
 
     const session = event.data.object as Stripe.Checkout.Session;
+
+    console.log(session);
+    console.log(`[EVENT TYPE]: ${event.type}`)
 
     // if event is checkout, retrieved subscription from stripe
     if (event.type === 'checkout.session.completed') {
@@ -39,7 +43,7 @@ export const POST = async(req: Request) => {
         }
 
         // create new subscription
-        await prismadb.userSubcription.create({
+        await prismadb.userSubscription.create({
             data: {
                 userId: session?.metadata?.userId,
                 stripeSubscriptionId: subscription.id,
@@ -57,7 +61,7 @@ export const POST = async(req: Request) => {
             session.subscription as string
         )
 
-        await prismadb.userSubcription.update({
+        await prismadb.userSubscription.update({
             where: {
                 stripeSubscriptionId: subscription.id
             },

@@ -1,8 +1,8 @@
 import Stripe from 'stripe';
-import { APP_CONFIG } from '@/lib/config';
+import CONFIG from './config';
 
 
-export const stripe = new Stripe(APP_CONFIG.stripe.apiKey, {
+export const stripe = new Stripe(CONFIG.stripe.apiKey, {
     apiVersion: "2023-10-16",
     typescript: true
 })

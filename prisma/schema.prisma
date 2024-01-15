@@ -16,7 +16,7 @@ model UserApiLimit {
   updatedAt DateTime @updatedAt
 }
 
-model UserSubcription {
+model UserSubscription {
   id                     String    @id @default(cuid())
   userId                 String    @unique
   stripeCustomerId       String?   @unique @map(name: "stripe_customer_id")

@@ -12,12 +12,11 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL,
 OPENAI_API_KEY,
 REPLICATE_API_TOKEN,
 DATABASE_URL,
+CLERK_SECRET_KEY,
 STRIPE_API_KEY,
 STRIPE_WEBHOOK_SECRET
 } = process.env;
 
-const CLERK_SECRET_KEY = process.env.CLERK_SECRET_KEY;
-console.log(typeof CLERK_SECRET_KEY, CLERK_SECRET_KEY)
 
 // validate the required configuration information
     assert(`${NEXT_PUBLIC_APP_URL}`, "NEXT_PUBLIC_APP_URL configuration is required.");
@@ -49,7 +48,7 @@ const CONFIG =  {
     databaseUrl: DATABASE_URL,
     stripe: {
         apiKey: STRIPE_API_KEY,
-        webhookSecret: STRIPE_WEBHOOK_SECRET
+        webhookSecret: STRIPE_WEBHOOK_SECRET as string
 
     }
 }
