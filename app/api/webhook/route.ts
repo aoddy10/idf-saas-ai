@@ -12,7 +12,7 @@ export const POST = async(req: Request) => {
     const body = await req.text();
     const signature = headers().get("Stripe-Signature") as string;
 
-    let event: Stripe.Event
+    let event: Stripe.Event;
 
     try {
         event = stripe.webhooks.constructEvent(
@@ -22,14 +22,13 @@ export const POST = async(req: Request) => {
         )
     
     } catch (error: any) {
+        console.log(error.message)
         return new NextResponse(`Webhook Error: ${error.message}`, {status: 400});
     }
 
 
     const session = event.data.object as Stripe.Checkout.Session;
 
-    console.log(session);
-    console.log(`[EVENT TYPE]: ${event.type}`)
 
     // if event is checkout, retrieved subscription from stripe
     if (event.type === 'checkout.session.completed') {
@@ -60,6 +59,8 @@ export const POST = async(req: Request) => {
         const subscription = await stripe.subscriptions.retrieve(
             session.subscription as string
         )
+
+        console.log(`[subscription]: `,subscription)
 
         await prismadb.userSubscription.update({
             where: {
