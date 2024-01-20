@@ -5,6 +5,7 @@ import OpenAI from "openai"
 import type { ChatMessageProps } from "@/lib/types";
 
 import { increaseApiLimit, checkApiLimit } from '@/lib/api-limit';
+import { checkSubscription } from '@/lib/subscription';
 
 
 const openai = new OpenAI();
@@ -36,8 +37,9 @@ export const POST = async (req: Request) => {
 
         // check api limit
         const freeTrial = await checkApiLimit();
+        const isPro = await checkSubscription();
 
-        if (!freeTrial) {
+        if (!freeTrial && !isPro) {
             return new NextResponse("Free trial has expired.", {status: 403});
         }
 
@@ -49,7 +51,9 @@ export const POST = async (req: Request) => {
         })
 
         // increase usage count
-        await increaseApiLimit();
+        if (!isPro) {
+            await increaseApiLimit();
+        }
 
         return NextResponse.json(response.choices[0].message)
 

@@ -63,17 +63,18 @@ const routes = [
     color: "text-green-700",
   },
   {
-    label: "Setting",
+    label: "Settings",
     icon: Settings,
-    href: "/setting",
+    href: "/settings",
   },
 ];
 
 type SidebarProps = {
   apiLimitCount: number;
+  isPro: boolean;
 };
 
-const Sidebar = ({ apiLimitCount }: SidebarProps) => {
+const Sidebar = ({ apiLimitCount, isPro = false }: SidebarProps) => {
   const pathname = usePathname();
 
   return (
@@ -109,7 +110,7 @@ const Sidebar = ({ apiLimitCount }: SidebarProps) => {
         ))}
       </div>
 
-      <FreeCounter apiLimitCount={apiLimitCount} />
+      <FreeCounter isPro={isPro} apiLimitCount={apiLimitCount} />
     </div>
   );
 };
