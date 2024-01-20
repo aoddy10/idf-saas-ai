@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils";
 import { Check, Zap } from "lucide-react";
 import { Button } from "./ui/button";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 function ProModal() {
   const proModal = useProModal();
@@ -30,7 +31,7 @@ function ProModal() {
 
       window.location.href = (await response).data.url;
     } catch (error) {
-      console.log(error, "STRIPE_CLIENT_ERROR");
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -67,6 +68,7 @@ function ProModal() {
         </DialogHeader>
         <DialogFooter>
           <Button
+            disabled={loading}
             size="lg"
             variant="premium"
             className="w-full"

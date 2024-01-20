@@ -1,8 +1,8 @@
 "use client";
+import { toast } from "react-hot-toast";
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import ChatCompletionRequestMessage from "openai";
 import axios from "axios";
 import type { ChatMessageProps } from "@/lib/types";
 
@@ -69,6 +69,8 @@ const ConversationPage = () => {
     } catch (error: any) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
+      } else {
+        toast.error("Something went wrong");
       }
     } finally {
       router.refresh();
