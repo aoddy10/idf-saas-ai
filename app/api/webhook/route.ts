@@ -1,4 +1,4 @@
-import CONFIG from '@/lib/config';
+import {AppConfig} from '@/lib/config';
 import Stripe from 'stripe'
 import { headers } from "next/headers";
 import { NextResponse } from 'next/server';
@@ -18,7 +18,7 @@ export const POST = async(req: Request) => {
         event = stripe.webhooks.constructEvent(
             body,
             signature,
-            CONFIG.stripe.webhookSecret!
+            AppConfig.stripe.STRIPE_WEBHOOK_SECRET!
         )
     
     } catch (error: any) {

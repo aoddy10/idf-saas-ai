@@ -7,7 +7,7 @@ import { checkSubscription } from "@/lib/subscription";
 
 const Navbar = async () => {
   const apiLimitCount = await getApiLimitCount();
-  const isPro = checkSubscription();
+  const isPro = await checkSubscription();
 
   return (
     <div className="flex p-4 items-center">

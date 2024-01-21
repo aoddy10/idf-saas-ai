@@ -1,5 +1,5 @@
 import { checkApiLimit, increaseApiLimit } from '@/lib/api-limit';
-import config from '@/lib/config'
+import {AppConfig} from '@/lib/config'
 import { checkSubscription } from '@/lib/subscription';
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
@@ -18,7 +18,7 @@ export const POST = async (req: Request) => {
             return new NextResponse("Unauthorized", {status: 401})
         }
 
-        if (!config.openaiApiKey) {
+        if (!AppConfig.OPENAI_API_KEY) {
             return new NextResponse("OpenAI API Key not configured", {status: 500})
         }
 

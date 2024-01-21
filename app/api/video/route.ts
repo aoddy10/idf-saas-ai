@@ -1,12 +1,12 @@
 import { checkApiLimit, increaseApiLimit } from '@/lib/api-limit';
-import config from '@/lib/config'
+import {AppConfig} from '@/lib/config'
 import { checkSubscription } from '@/lib/subscription';
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import Replicate from 'replicate'
 
 const replicate = new Replicate({
-    auth: config.replicateApiToken || ''
+    auth: AppConfig.REPLICATE_API_TOKEN || ''
 })
 
 export const POST = async (req: Request) => {
