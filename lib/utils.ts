@@ -1,4 +1,4 @@
-import Config from '@/lib/config'
+import {AppConfig} from '@/lib/config'
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
  
@@ -7,5 +7,5 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function absoluteUrl(path: string) {
-  return `${Config.nextPublicAppUrl}${path}`
+  return `${AppConfig.NEXT_PUBLIC_APP_URL}${path}`
 }
