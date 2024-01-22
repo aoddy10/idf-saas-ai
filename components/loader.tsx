@@ -6,7 +6,7 @@ export const Loader = () => {
       <div className="w-10 h-10 relative animate-spin justify-center items-center flex">
         <Loader2Icon />
       </div>
-      <p className="text-sm text-muted-foreground">Genius is thinking...</p>
+      <p className="text-sm text-muted-foreground">IDEV is thinking...</p>
     </div>
   );
 };

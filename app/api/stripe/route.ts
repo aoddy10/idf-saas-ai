@@ -48,7 +48,7 @@ export const GET = async() => {
                 price_data: {
                     currency: "USD",
                     product_data: {
-                        name: "Genius Pro",
+                        name: "IDEV Pro",
                         description: "Unlimited AI Generations"
                     },
                     unit_amount: 2000,
