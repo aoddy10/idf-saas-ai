@@ -1,40 +1,8 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-
-interface Itestimonial {
-  name: string;
-  avatar: string;
-  title: string;
-  description: string;
-}
-
-const testimonials: Itestimonial[] = [
-  {
-    name: "Antonio",
-    avatar: "A",
-    title: "Software Engineer",
-    description: "This is the best applicaiton I've used!",
-  },
-  {
-    name: "Antonio",
-    avatar: "A",
-    title: "Software Engineer",
-    description: "This is the best applicaiton I've used!",
-  },
-  {
-    name: "Antonio",
-    avatar: "A",
-    title: "Software Engineer",
-    description: "This is the best applicaiton I've used!",
-  },
-  {
-    name: "Antonio",
-    avatar: "A",
-    title: "Software Engineer",
-    description: "This is the best applicaiton I've used!",
-  },
-];
+import { Avatar } from "../ui/avatar";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { testimonials } from "./constant";
 
 const LandingContent = () => {
   return (
@@ -49,7 +17,10 @@ const LandingContent = () => {
             className="bg-[#192339] border-none text-white"
           >
             <CardHeader>
-              <CardTitle className="flex items-center gap-x-2">
+              <CardTitle className="flex items-start gap-x-2 flex-col">
+                <Avatar className=" bg-black/30 text-secondary flex justify-center items-center text-sm mb-3 h-12 w-12">
+                  {item.avatar}
+                </Avatar>
                 <div>
                   <p className="text-lg">{item.name}</p>
                   <p className="text-zinc-400 text-sm">{item.title}</p>
