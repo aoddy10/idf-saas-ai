@@ -28,7 +28,7 @@ const LandingNavbar = () => {
       </Link>
       <div className="flex items-center gap-x-2">
         <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
-          <Button variant="outline" className="rounded-full">
+          <Button variant="default" className="rounded-full hover:bg-secondary">
             Get Started
           </Button>
         </Link>
