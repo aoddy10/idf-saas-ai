@@ -5,7 +5,12 @@
 html,body, :root {
   height: 100%;
 }
- 
+
+/* primary: #0d1caf   234 86% 37%  */
+/* primary-dark: #000857  234 100% 17%  */
+/* secondary: #BB35DD    288 71% 54% */
+ /* accent: #ffc967   39 100% 70% */
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -17,18 +22,17 @@ html,body, :root {
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
  
-    --primary: 218 87% 10%;
+    --primary: 234 86% 37%;
+    --primary-dark: 234 100% 17%;
     --primary-foreground: 210 40% 98%;
- 
-    /* 39 100% 45%; */
-    /* 210 40% 96.1%; */
-    --secondary: 210 40% 96.1%;
+
+    --secondary: 288 71% 54%;
     --secondary-foreground: 222.2 47.4% 11.2%;
  
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
  
-    --accent: 258.29 89.5% 66.3%;
+    --accent: 39 100% 70%;
     --accent-foreground: 222.2 47.4% 11.2%;
  
     --destructive: 0 84.2% 60.2%;
@@ -80,3 +84,4 @@ html,body, :root {
     @apply bg-background text-foreground;
   }
 }
+

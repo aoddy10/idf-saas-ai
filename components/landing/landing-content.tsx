@@ -14,7 +14,7 @@ const LandingContent = () => {
         {testimonials.map((item) => (
           <Card
             key={item.description}
-            className="bg-[#192339] border-none text-white"
+            className="border-none text-white bg-gradient-to-r from-secondary to-transparent bg-transparent"
           >
             <CardHeader>
               <CardTitle className="flex items-start gap-x-2 flex-col">
