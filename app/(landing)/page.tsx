@@ -1,4 +1,3 @@
-import LandingContent from "@/components/landing/landing-content";
 import LandingHero from "@/components/landing/landing-hero";
 import LandingNavbar from "@/components/landing/landing-navbar";
 
@@ -7,7 +6,6 @@ const LandingPage = () => {
     <div className="h-full">
       <LandingNavbar />
       <LandingHero />
-      <LandingContent />
     </div>
   );
 };

@@ -1,0 +1,40 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:15
+    env_file: ./.env
+    container_name: idf_saas_ai_db
+    environment:
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - $POSTGRES_PORT:5432
+    networks:
+      - idf-saas-ai-network
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: idf_saas_ai_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: $PGADMIN_DEFAULT_EMAIL
+      PGADMIN_DEFAULT_PASSWORD: $PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - 16544:80
+    volumes:
+      - ./servers.json:/pgadmin4/servers.json
+    networks:
+      - idf-saas-ai-network
+    depends_on:
+      - idf_saas_ai_db
+
+# volumes:
+#     postgres-db-volume:
+#         driver: local
+#         driver_opts:
+#             type: none
+#             o: bind
+#             device: ./data
+networks:
+  idf-saas-ai-network:
+    driver: bridge
