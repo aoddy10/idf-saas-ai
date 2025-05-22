@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🧠 IDF SaaS AI Platform
 
-## Getting Started
+A full-stack AI-powered SaaS platform enabling users to generate content such as text, images, and code using OpenAI's APIs. The application incorporates user authentication, subscription management, and a modular architecture for scalability.
 
-First, run the development server:
+Live Demo: [https://idf-saas-ai.vercel.app](https://idf-saas-ai.vercel.app)
+
+---
+
+## 🚀 Features
+
+- ✍️ **AI Content Generation**: Generate text, images, and code using OpenAI APIs.
+- 🔐 **User Authentication**: Secure authentication and user management.
+- 💳 **Subscription Management**: Integrate Stripe for handling user subscriptions.
+- 🧩 **Modular Architecture**: Easily extendable components for adding new features.
+- 📊 **Usage Tracking**: Monitor user activity and API usage.
+
+---
+
+## 🛠️ Tech Stack
+
+| Area       | Technologies                         |
+|------------|--------------------------------------|
+| Frontend   | Next.js, React, Tailwind CSS         |
+| Backend    | Node.js, Next.js API Routes          |
+| AI/ML      | OpenAI API                           |
+| Database   | Prisma ORM, PostgreSQL               |
+| Authentication | Clerk.dev                        |
+| Payments   | Stripe                               |
+| Deployment | Vercel                               |
+
+---
+
+## 📸 Screenshots
+
+> _Note: Replace the placeholders with actual screenshots._
+
+- ![Dashboard](docs/screenshot-dashboard.png)
+- ![AI Tool Interface](docs/screenshot-ai-tool.png)
+
+---
+
+## 🧠 Architecture Overview
+
+```
+[ Next.js (Frontend) ]
+       ↓
+[ API Routes (Backend) ]
+       ↓
+[ OpenAI API Integration ]
+       ↓
+[ Prisma ORM → PostgreSQL ]
+       ↓
+[ Authentication (Clerk.dev) & Payments (Stripe) ]
+```
+
+---
+
+## 🧪 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/aoddy10/idf-saas-ai.git
+cd idf-saas-ai
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env` file in the root directory and add the following variables:
+
+```env
+OPENAI_API_KEY=your_openai_api_key
+DATABASE_URL=your_database_url
+CLERK_SECRET_KEY=your_clerk_secret_key
+STRIPE_SECRET_KEY=your_stripe_secret_key
+```
+
+Refer to `.env.example` for guidance.
+
+### 4. Set Up the Database
+
+```bash
+npx prisma generate
+npx prisma migrate dev
+```
+
+### 5. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 💡 Future Improvements
 
-## Learn More
+- [ ] Implement additional AI tools (e.g., music generation).
+- [ ] Enhance user dashboard with analytics.
+- [ ] Add internationalization support.
+- [ ] Integrate more payment options.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📄 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is intended for demonstration purposes and is not licensed for commercial use. For inquiries, please contact [anirut.puangkingkaew@gmail.com](mailto:anirut.puangkingkaew@gmail.com).
